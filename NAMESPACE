@@ -2,6 +2,8 @@
 
 export("%>%")
 export(averages_row)
+export(format_currency)
+export(format_currency_vec)
 export(format_numeric)
 export(format_numeric_vec)
 export(format_percent)

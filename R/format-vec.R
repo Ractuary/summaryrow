@@ -42,3 +42,23 @@ format_percent_vec <- function(x, digits = 2) {
   
   paste0(x, "%")
 }
+
+#' format_currency_vec
+#' 
+#' format numeric vectors with a currency symbol for reports
+#' 
+#' @param x numeric vector
+#' @param digits number of digits afer the decimal point
+#' 
+#' @export
+#' 
+#' @examples
+#' x <- seq(1000, 3000, by = 1000)
+#' 
+#' format_currency_vec(x)
+#' format_currency_vec(x, digits = 2)
+format_currency_vec <- function(x, digits = 2) {
+  x <- format_numeric_vec(x, digits = digits)
+  
+  paste0("$", x)
+}

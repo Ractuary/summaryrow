@@ -11,7 +11,7 @@ format_percent(df, cols, digits = 0)
 
 \item{cols}{columns to format}
 
-\item{digits}{}
+\item{digits}{number of digits after the decimal point}
 }
 \description{
 format_percent
