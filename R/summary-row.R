@@ -121,7 +121,7 @@ totals_row <- function(df,
                         label_col = NA,
                         label = "Totals",
                         new_row = TRUE) {
-  summary_row(fun = sum, na.rm = TRUE, df = df, cols = cols, 
+  summary_row(fun = sum, na.rm = TRUE, df = df, cols = cols, rows = rows, 
               label_col = label_col, label = label, new_row = new_row)
 }
 
@@ -161,6 +161,6 @@ averages_row <- function(df,
                          label_col = NA,
                          label = "Totals",
                          new_row = TRUE) {
-  summary_row(fun = mean, na.rm = TRUE, df = df, cols = cols, 
+  summary_row(fun = mean, na.rm = TRUE, df = df, cols = cols, rows = rows,
               label_col = label_col, label = label, new_row = new_row)
 }

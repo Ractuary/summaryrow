@@ -8,6 +8,11 @@ Authors@R: person("Andy", "Merlino", email = "merlinoa88@gmail.com", role =
 Description: Flexible tool for adding summary rows to a data frame
 License: GPL-3
 LazyData: true
+imports:
+    magrittr
 Depends:
     R (>= 3.1.2)
 RoxygenNote: 5.0.1
+Suggests: knitr,
+    rmarkdown
+VignetteBuilder: knitr
