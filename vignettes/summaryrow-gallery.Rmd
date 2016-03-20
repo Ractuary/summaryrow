@@ -1,0 +1,119 @@
+---
+title: "summaryrow Gallery"
+author: "Andy Merlino"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{summaryrow Gallery}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+### make a data frame
+```{r data, results='asis'}
+library(knitr) # for quick tables
+library(summaryrow)
+
+# create an example data frame
+data <- data.frame(
+          "year" = 2014:2016,
+          "exposure" = c(5000, 5100, 5200),
+          "reported" = c(4000, 3000, 1500),
+          "ultimate" = c(6100, 6500, 7000)
+        )
+data$reported_pct <- data$reported / data$ultimate
+
+kable(data)
+```
+
+### add a totals summary row
+```{r, results="asis"}
+table_1 <- data %>% totals_row(cols = 2:4)
+
+kable(table_1)
+```
+
+### include a totals row label
+```{r, results="asis"}
+table_2 <- data %>% totals_row(cols = 2:4, label_col = 1, label = "Totals:")
+
+kable(table_2)
+```
+
+### add an averges row
+```{r, results="asis"}
+table_3 <- data %>% averages_row(cols = 5, label_col = 1, label = "Averages:")
+
+kable(table_3)
+```
+
+### make a totals and an averages row
+```{r, results="asis"}
+table_4 <- data %>% totals_row(cols = 2:4, label_col = 1, label = "Totals:") %>%
+                      averages_row(cols = 5, label_col = 1, label = "Averages:")
+
+kable(table_4)
+```
+
+### make one row with totals and averages
+```{r, results="asis"}
+table_5 <- data %>% totals_row(cols = 2:4) %>%
+                      averages_row(cols = 5, label_col = 1, label = "Totals/Averages:", 
+                                   new_row = FALSE)
+
+kable(table_5)
+```
+
+### make a totals row including only the last 2 years
+```{r, results="asis"}
+table_6 <- data %>% totals_row(cols = 2:4, label_col = 1, label = "2 Yr Totals:", rows = 2:3)
+
+kable(table_6)
+```
+
+### make two different totals rows
+```{r, results="asis"}
+table_7 <- data %>% totals_row(cols = 2:4, label_col = 1, label = "Totals:") %>%
+                      totals_row(cols = 2:4, label_col = 1, label = "2 Yr Totals:", rows = 2:3)
+
+kable(table_7)
+```
+
+### putting totals and averages together
+```{r, results="asis"}
+table_8 <- data %>% totals_row(cols = 2:4) %>%
+                      averages_row(cols = 5, label_col = 1, label = "Totals/Averages:", 
+                                   new_row = FALSE) %>%
+                      totals_row(cols = 2:4, rows = 2:3) %>%
+                      averages_row(cols = 5, label_col = 1, label = "2 Yr Totals/Averages:", 
+                                   rows = 2:3, new_row = FALSE)
+
+kable(table_8)
+```
+
+### adding new columns with summary row info
+```{r, results="asis"}
+library(dplyr, warn.conflicts = FALSE)
+table_9 <- data %>% totals_row(cols = 2:4, label_col = 1, label = "Totals:") %>%
+                      averages_row(cols = 5, label_col = 1, label = "Totals/Averages:", 
+                                   new_row = FALSE) %>%
+                      mutate(loss_cost = ultimate / exposure)
+
+kable(table_9)
+```
+
+### now to format those columns
+```{r, results="asis", eval = TRUE}
+library(dplyr, warn.conflicts = FALSE)
+table_9 <- data %>% totals_row(cols = 2:4, label_col = 1, label = "Totals:") %>%
+                      averages_row(cols = 5, label_col = 1, label = "Totals/Averages:", 
+                                   new_row = FALSE) %>%
+                      mutate(loss_cost = ultimate / exposure,
+                             reported_pct = reported / ultimate) %>%
+                      format_numeric(cols = 2, digits = 0) %>%
+                      format_currency(cols = 3:4, digits = 0) %>%
+                      format_percent(cols = 5, digits = 2) %>%
+                      format_numeric(cols = 6, digits = 3)
+
+kable(table_9)
+```

@@ -29,6 +29,7 @@ format_numeric_vec <- function(x, digits = 0) {
 #' 
 #' @param x numeric vector
 #' @param digits number of digits afer the decimal point
+#' @param multiple value to multiply \code{x} by to get proper percentage.  Default is 100.
 #' 
 #' @export
 #' 
@@ -37,7 +38,8 @@ format_numeric_vec <- function(x, digits = 0) {
 #' 
 #' format_percent_vec(x)
 #' format_percent_vec(x, digits = 2)
-format_percent_vec <- function(x, digits = 2) {
+format_percent_vec <- function(x, digits = 2, multiple = 100) {
+  x <- x * multiple
   x <- format_numeric_vec(x, digits = digits)
   
   paste0(x, "%")
