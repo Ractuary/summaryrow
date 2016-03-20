@@ -108,7 +108,7 @@ library(dplyr, warn.conflicts = FALSE)
 table_9 <- data %>% totals_row(cols = 2:4, label_col = 1, label = "Totals:") %>%
                       averages_row(cols = 5, label_col = 1, label = "Totals/Averages:", 
                                    new_row = FALSE) %>%
-                      mutate(loss_cost = ultimate / exposure,
+                      dplyr::mutate(loss_cost = ultimate / exposure,
                              reported_pct = reported / ultimate) %>%
                       format_numeric(cols = 2, digits = 0) %>%
                       format_currency(cols = 3:4, digits = 0) %>%

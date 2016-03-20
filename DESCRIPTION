@@ -9,7 +9,8 @@ Description: Flexible tool for adding summary rows to a data frame
 License: GPL-3
 LazyData: true
 imports:
-    magrittr
+    magrittr,
+    dplyr
 Depends:
     R (>= 3.1.2)
 RoxygenNote: 5.0.1

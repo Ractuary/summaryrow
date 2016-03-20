@@ -4,12 +4,14 @@
 \alias{format_percent_vec}
 \title{format_percent_vec}
 \usage{
-format_percent_vec(x, digits = 2)
+format_percent_vec(x, digits = 2, multiple = 100)
 }
 \arguments{
 \item{x}{numeric vector}
 
 \item{digits}{number of digits afer the decimal point}
+
+\item{multiple}{value to multiply \code{x} by to get proper percentage.  Default is 100.}
 }
 \description{
 format numeric vectors for reports
