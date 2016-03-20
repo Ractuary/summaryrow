@@ -15,8 +15,6 @@
 #' be a new row attached to the bottom of the data frame or if it should be 
 #' combined with an already existing summary row.
 #' 
-#' @import dplyr
-#' 
 #' @export
 #' 
 #' @examples 
