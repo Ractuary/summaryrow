@@ -1,4 +1,7 @@
 # summaryrow
+
+[![Travis-CI Build Status](https://travis-ci.org/merlinoa/summaryrow.svg?branch=master)](https://travis-ci.org/merlinoa/summaryrow)
+
 Flexible tool for adding summary rows to a data frame
 
 # Purpose and Motivation
@@ -9,7 +12,7 @@ Reports often include tables of data.  e.g.
 | 2015 | 1     | 3     |
 | 2016 | 2     | 4     |
 
-It is often useful to summarize columns of a table by attaching 1 or more rows to the bottom of the table.  Each column in the new summary row is a function of the other data in the column. Here the summary row contains the column totals:
+It is often useful to summarize columns of a table by attaching 1 or more rows to the bottom of the table.  Each column in the new summary row is a function of the other data in the column. In the following table the summary row contains the column totals:
 
 | Year | Col 2 | Col 3 |
 |------|-------|-------|
