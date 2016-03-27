@@ -5,7 +5,7 @@
 \title{averages_row}
 \usage{
 averages_row(df, cols, rows = NA, label_col = NA, label = "Totals",
-  new_row = TRUE)
+  new_row = TRUE, fill = NA)
 }
 \arguments{
 \item{df}{the data frame}
@@ -22,6 +22,9 @@ specified by the \code{label} argument}
 \item{new_row}{boolean value indicating whether the summary row should
 be a new row attached to the bottom of the data frame or if it should be 
 combined with an already existing summary row.}
+
+\item{fill}{value to put in columns not specified in the \code{cols} argument.
+Default is NA}
 }
 \description{
 add a averages summary row to a data frame

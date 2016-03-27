@@ -14,6 +14,8 @@
 #' @param new_row boolean value indicating whether the summary row should
 #' be a new row attached to the bottom of the data frame or if it should be 
 #' combined with an already existing summary row.
+#' @param fill value to put in columns not specified in the \code{cols} argument.  
+#' Default is NA
 #' 
 #' @export
 #' 
@@ -51,7 +53,8 @@ summary_row <- function(df,
                         rows = NA,
                         label_col = NA,
                         label = "Summary",
-                        new_row = TRUE) {
+                        new_row = TRUE,
+                        fill = NA) {
   # if new_row is false, remove the last row from df before creating the
   # new summary row
   if (new_row == FALSE) {
@@ -73,7 +76,7 @@ summary_row <- function(df,
       }
     }
   } else {
-    s_row[-cols] <- NA
+    s_row[-cols] <- fill
   }
   
   names(s_row) <- names(df)
@@ -99,6 +102,8 @@ summary_row <- function(df,
 #' @param new_row boolean value indicating whether the summary row should
 #' be a new row attached to the bottom of the data frame or if it should be 
 #' combined with an already existing summary row.
+#' @param fill value to put in columns not specified in the \code{cols} argument.  
+#' Default is NA
 #' 
 #' @export
 #' 
@@ -120,9 +125,10 @@ totals_row <- function(df,
                         rows = NA, 
                         label_col = NA,
                         label = "Totals",
-                        new_row = TRUE) {
+                        new_row = TRUE,
+                        fill = NA) {
   summary_row(fun = sum, na.rm = TRUE, df = df, cols = cols, rows = rows, 
-              label_col = label_col, label = label, new_row = new_row)
+              label_col = label_col, label = label, new_row = new_row, fill = fill)
 }
 
 
@@ -139,6 +145,8 @@ totals_row <- function(df,
 #' @param new_row boolean value indicating whether the summary row should
 #' be a new row attached to the bottom of the data frame or if it should be 
 #' combined with an already existing summary row.
+#' @param fill value to put in columns not specified in the \code{cols} argument.  
+#' Default is NA
 #' 
 #' @export
 #' 
@@ -160,7 +168,8 @@ averages_row <- function(df,
                          rows = NA,
                          label_col = NA,
                          label = "Totals",
-                         new_row = TRUE) {
+                         new_row = TRUE,
+                         fill = NA) {
   summary_row(fun = mean, na.rm = TRUE, df = df, cols = cols, rows = rows,
-              label_col = label_col, label = label, new_row = new_row)
+              label_col = label_col, label = label, new_row = new_row, fill = fill)
 }
