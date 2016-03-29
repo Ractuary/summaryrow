@@ -8,7 +8,7 @@ Authors@R: person("Andy", "Merlino", email = "merlinoa88@gmail.com", role =
 Description: Flexible tool for binding summary rows to a data frame
 License: GPL-3
 LazyData: true
-imports:
+Imports:
     magrittr
 Depends:
     R (>= 3.1.2)
