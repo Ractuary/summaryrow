@@ -12,7 +12,7 @@ Reports often include tables of data.  e.g.
 | 2015 | 1     | 3     |
 | 2016 | 2     | 4     |
 
-It is often useful to summarize columns of a table by attaching 1 or more rows to the bottom of the table.  Each column in the new summary row is a function of the other data in the column. In the following table the summary row contains the column totals:
+For presentation, it is often useful to summarize columns of a table by attaching 1 or more rows to the bottom of the table.  Each column in the new summary row is a function of the data corresponding column of the original table. In the following table the summary row contains the column totals:
 
 | Year | Col 2 | Col 3 |
 |------|-------|-------|

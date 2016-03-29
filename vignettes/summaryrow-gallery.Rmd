@@ -30,9 +30,12 @@ kable(table_1)
 ```
 
 ### include a totals row label
+
+Additionally use the `fill` argument to set the fill value supplied in summary row columns not specified in the `cols` argument.  The default is `NA`.
+
 ```{r, results="asis"}
 table_2 <- insurance_data %>% 
-             totals_row(cols = 2:4, label_col = 1, label = "Totals:")
+             totals_row(cols = 2:4, label_col = 1, label = "Totals:", fill = "")
 
 kable(table_2)
 ```
