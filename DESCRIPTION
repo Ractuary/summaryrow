@@ -1,13 +1,20 @@
 Package: summaryrow
 Type: Package
-Title: Add summary rows to a data frame
+Title: Bind summary rows to a data frame
 Version: 0.0.0.9000
 Date: 2016-03-17
 Authors@R: person("Andy", "Merlino", email = "merlinoa88@gmail.com", role =
     c("aut", "cre"))
-Description: Flexible tool for adding summary rows to a data frame
+Description: Flexible tool for binding summary rows to a data frame
 License: GPL-3
 LazyData: true
+imports:
+    magrittr
 Depends:
     R (>= 3.1.2)
 RoxygenNote: 5.0.1
+Suggests: 
+    knitr,
+    rmarkdown,
+    dplyr
+VignetteBuilder: knitr

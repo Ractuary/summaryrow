@@ -1,0 +1,3 @@
+#' @import magrittr
+#' @export
+magrittr::`%>%`
