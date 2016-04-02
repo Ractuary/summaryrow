@@ -28,6 +28,7 @@
 #' summary_row(fun = sum, na.rm = TRUE, df = df, cols = 2)
 #' summary_row(fun = sum, na.rm = TRUE, df = df, cols = 2, label_col = 1, 
 #'             label = "Totals")
+#' summary_row(fun = sum, na.rm = TRUE, df = df, cols = 2, fill = "HI")
 #' 
 #' df$d <- 5:7
 #' 
@@ -66,18 +67,17 @@ summary_row <- function(df,
     rows <- 1:nrow(df)
   }
   
-  s_row <- vector("list", length = length(df))
+  # calculate summary values
+  s_row <- rep(list(fill), length(df))
   s_row[cols] <- lapply(df[rows, cols, drop = FALSE], fun, ...)
   
   if (new_row == FALSE) {
-    for (i in seq_along(s_row)) {
-      if (length(s_row[[i]]) == 0) {
-        s_row[[i]] <- last_row[1, i]
-      }
-    }
-  } else {
-    s_row[-cols] <- fill
-  }
+    s_row[-cols] <- last_row[1, -cols]
+  } 
+  
+  # convert factor columns to character for fill bind
+  factors <- unlist(lapply(df, is.factor))
+  df[, factors] <- lapply(df[, factors, drop = FALSE], as.character)
   
   names(s_row) <- names(df)
   df <- rbind(df, s_row)
