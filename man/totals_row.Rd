@@ -12,7 +12,9 @@ totals_row(df, cols, rows = NA, label_col = NA, label = "Totals",
 
 \item{cols}{columns to include in the summary row}
 
-\item{rows}{numeric vector of rows to include in summary calculation}
+\item{rows}{numeric vector of rows to include in summary calculation.  By default
+\code{rows} is set to all rows that were not created by the \code{summary_row} 
+function.}
 
 \item{label_col}{column number of column to hold the summary row label
 specified by the \code{label} argument}

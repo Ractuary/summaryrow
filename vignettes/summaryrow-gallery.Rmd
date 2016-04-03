@@ -51,7 +51,7 @@ kable(table_3)
 ### make a totals and an averages row
 ```{r, results="asis"}
 table_4 <- insurance_data %>% 
-             totals_row(cols = 2:4, label_col = 1, label = "Totals:") %>%
+             totals_row(cols = 2:4, label_col = 1, label = "Totals 2 yr:") %>%
              averages_row(cols = 5, label_col = 1, label = "Averages:")
 
 kable(table_4)
@@ -78,10 +78,11 @@ kable(table_6)
 
 ### make two different totals rows
 ```{r, results="asis"}
-table_7 <- insurance_data %>% 
-             totals_row(cols = 2:4, label_col = 1, label = "Totals:") %>%
+table_7 <- insurance_data %>%
              totals_row(cols = 2:4, label_col = 1, label = "2 Yr Totals:", 
-                        rows = 2:3)
+                        rows = 2:3) %>%
+             totals_row(cols = 2:4, label_col = 1, label = "Totals:")
+             
 
 kable(table_7)
 ```

@@ -17,7 +17,9 @@ summary_row(df, cols, fun, ..., rows = NA, label_col = NA,
 \item{...}{other arguments to be passed to the function specified in the
 fun argument}
 
-\item{rows}{numeric vector of rows to include in summary calculation}
+\item{rows}{numeric vector of rows to include in summary calculation.  By default
+\code{rows} is set to all rows that were not created by the \code{summary_row} 
+function.}
 
 \item{label_col}{column number of column to hold the summary row label
 specified by the \code{label} argument}
@@ -43,6 +45,7 @@ df <- data.frame("year" = 2014:2016,
 summary_row(fun = sum, na.rm = TRUE, df = df, cols = 2)
 summary_row(fun = sum, na.rm = TRUE, df = df, cols = 2, label_col = 1, 
             label = "Totals")
+summary_row(fun = sum, na.rm = TRUE, df = df, cols = 2, fill = "HI")
 
 df$d <- 5:7
 
