@@ -4,8 +4,10 @@
 #' 
 #' @param df data frame containing the column to be formatted
 #' @param cols numeric vector of column indices
-#' @oaram fun formatting function
+#' @param fun formatting function
 #' @param ... additional arguments to pass to \code{fun}
+#' 
+#' @export
 format_ <- function(df, cols, fun, ...) {
   df[, cols] <- apply(df[, cols, drop = FALSE], 
                       2, 
