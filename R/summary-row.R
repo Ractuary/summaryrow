@@ -7,7 +7,9 @@
 #' @param fun function to summarize data frame rows
 #' @param ... other arguments to be passed to the function specified in the
 #' fun argument
-#' @param rows numeric vector of rows to include in summary calculation
+#' @param rows numeric vector of rows to include in summary calculation.  By default
+#' \code{rows} is set to all rows that were not created by the \code{summary_row} 
+#' function.
 #' @param label_col column number of column to hold the summary row label
 #' specified by the \code{label} argument
 #' @param label summary row label
@@ -63,8 +65,14 @@ summary_row <- function(df,
     df <- df[-nrow(df), ]
   }
   
+  if (!inherits(df, "summary_table")) {
+    df <- summary_table(df)
+  }
+  
+  # find rows in original data before any summary rows
+  # were added
   if (is.na(rows[1])) {
-    rows <- 1:nrow(df)
+    rows <- attr(df, "original_rows")
   }
   
   # calculate summary values
@@ -95,7 +103,9 @@ summary_row <- function(df,
 #' 
 #' @param df the data frame
 #' @param cols columns to include in the summary row
-#' @param rows numeric vector of rows to include in summary calculation
+#' @param rows numeric vector of rows to include in summary calculation.  By default
+#' \code{rows} is set to all rows that were not created by the \code{summary_row} 
+#' function.
 #' @param label_col column number of column to hold the summary row label
 #' specified by the \code{label} argument
 #' @param label summary row label
@@ -138,7 +148,9 @@ totals_row <- function(df,
 #' 
 #' @param df the data frame
 #' @param cols columns to include in the summary row
-#' @param rows numeric vector of rows to include in summary calculation
+#' @param rows numeric vector of rows to include in summary calculation.  By default
+#' \code{rows} is set to all rows that were not created by the \code{summary_row} 
+#' function.
 #' @param label_col column number of column to hold the summary row label
 #' specified by the \code{label} argument
 #' @param label summary row label
