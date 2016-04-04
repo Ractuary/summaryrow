@@ -18,7 +18,7 @@ format_numeric
 }
 \examples{
 
-
+format_numeric(insurance_data, cols = 2, digits = 0)
 
 }
 

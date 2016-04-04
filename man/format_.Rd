@@ -4,12 +4,14 @@
 \alias{format_}
 \title{format_}
 \usage{
-format_(df, cols, fun, ...)
+format_(df, cols, include_summary, fun, ...)
 }
 \arguments{
 \item{df}{data frame containing the column to be formatted}
 
 \item{cols}{numeric vector of column indices}
+
+\item{include_summary}{whether or not to format the summary rows}
 
 \item{fun}{formatting function}
 

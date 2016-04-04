@@ -64,3 +64,33 @@ format_currency_vec <- function(x, digits = 2) {
   
   paste0("$", x)
 }
+
+#' format_origin_vec
+#' 
+#' format origin period vector
+#' 
+#' @param x a vector of dates.  Each date indicates the first day
+#' of the origin period
+#' @param eval Most recent evaluation time. This will be used as the second
+#' date in the last element in the vector \code{x}
+#' @param sep character string to place between dates
+#' 
+#' @export
+#' 
+#' @examples
+#' x <- c("2014-01-01", "2015-01-01", "2016-01-01")
+#' 
+#' format_origin_vec(x, eval = "2015-03-31")
+#' format_origin_vec(x, eval = "2015-03-31", sep = " - ")
+format_origin_vec <- function(x, eval, sep = " to ") {
+  
+  len <- length(x)
+  
+  for (i in 1:(len - 1)) {
+    x[i] <- paste(x[i], x[i + 1], sep = sep)
+  }
+  
+  x[len] <- paste(x[len], eval, sep = sep)
+  
+  x
+}
