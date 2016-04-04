@@ -11,10 +11,6 @@
 #' @export
 format_ <- function(df, cols, include_summary, fun, ...) {
   
-  if (!inherits(df, "summary_table")) {
-    df <- summary_table(df)
-  }
-  
   # whether or not to format the summary rows
   if (include_summary) {
     rows <- 1:nrow(df)
