@@ -22,9 +22,9 @@ When tables are presented in reports, it is often useful to summarize columns of
 
 The values 3 and 7 are the sum of the above columns.  More generally, for any summary row, the value in each column is a function of some data in the original table. 
 
-When writing base R code, a non trivial amount of additional code is needed to create these summary rows.  `summaryrow`'s job is to reduce the code and time it takes to create these summary rows so you can get back to more interesting problems.
+When writing base R code, a non trivial amount of additional code is needed to create even a very simple summary row like the one shown above.  `summaryrow`'s job is to reduce the code and time it takes to create these summary rows so you can get back to more interesting problems.
 
-`summaryrow` also makes your code easier to follow by using the `magrittr::'%>%'` function to build up one or more of these summary rows.  
+`summaryrow` also makes the code used to create summary rows easier to follow/understand by using the `magrittr::'%>%'` function to build up one or more of these summary rows.  
 
 # Installation
 ```R
