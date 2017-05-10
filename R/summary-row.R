@@ -8,15 +8,15 @@
 #' @param ... other arguments to be passed to the function specified in the
 #' fun argument
 #' @param rows numeric vector of rows to include in summary calculation.  By default
-#' \code{rows} is set to all rows that were not created by the \code{summary_row} 
+#' \code{rows} is set to all rows that were not created by the a \code{summary_row} 
 #' function.
-#' @param label_col column number of column to hold the summary row label
-#' specified by the \code{label} argument
-#' @param label summary row label
+#' @param label_col column number to hold the summary row label specified by 
+#' the \code{label} argument
+#' @param label summary row label (e.g. "Totals")
 #' @param new_row boolean value indicating whether the summary row should
 #' be a new row attached to the bottom of the data frame or if it should be 
 #' combined with an already existing summary row.
-#' @param fill value to put in columns not specified in the \code{cols} argument.  
+#' @param fill value to insert in columns not specified in the \code{cols} argument.  
 #' Default is NA
 #' 
 #' @export
@@ -99,21 +99,11 @@ summary_row <- function(df,
 
 #' totals_row
 #' 
-#' add a totals summary row to a data frame
-#' 
-#' @param df the data frame
-#' @param cols columns to include in the summary row
-#' @param rows numeric vector of rows to include in summary calculation.  By default
-#' \code{rows} is set to all rows that were not created by the \code{summary_row} 
+#' add a totals summary row to a data frame.  This is a wrapper around the \code{\link{summary_row}}
 #' function.
-#' @param label_col column number of column to hold the summary row label
-#' specified by the \code{label} argument
-#' @param label summary row label
-#' @param new_row boolean value indicating whether the summary row should
-#' be a new row attached to the bottom of the data frame or if it should be 
-#' combined with an already existing summary row.
-#' @param fill value to put in columns not specified in the \code{cols} argument.  
-#' Default is NA
+#' 
+#' @inheritParams summary_row
+#' @param label summary row label. defaults to "Totals"
 #' 
 #' @export
 #' 
@@ -137,28 +127,18 @@ totals_row <- function(df,
                         label = "Totals",
                         new_row = TRUE,
                         fill = NA) {
-  summary_row(fun = sum, na.rm = TRUE, df = df, cols = cols, rows = rows, 
+  summary_row(df = df, cols = cols, fun = sum, na.rm = TRUE, rows = rows, 
               label_col = label_col, label = label, new_row = new_row, fill = fill)
 }
 
 
 #' averages_row
 #' 
-#' add a averages summary row to a data frame
-#' 
-#' @param df the data frame
-#' @param cols columns to include in the summary row
-#' @param rows numeric vector of rows to include in summary calculation.  By default
-#' \code{rows} is set to all rows that were not created by the \code{summary_row} 
+#' add a averages summary row to a data frame.  This is a wrapper around the \code{\link{summary_row}}
 #' function.
-#' @param label_col column number of column to hold the summary row label
-#' specified by the \code{label} argument
-#' @param label summary row label
-#' @param new_row boolean value indicating whether the summary row should
-#' be a new row attached to the bottom of the data frame or if it should be 
-#' combined with an already existing summary row.
-#' @param fill value to put in columns not specified in the \code{cols} argument.  
-#' Default is NA
+#' 
+#' @inheritParams summary_row
+#' @param label summary row label. defaults to "Averages"
 #' 
 #' @export
 #' 
@@ -179,9 +159,35 @@ averages_row <- function(df,
                          cols,
                          rows = NA,
                          label_col = NA,
-                         label = "Totals",
+                         label = "Averages",
                          new_row = TRUE,
                          fill = NA) {
-  summary_row(fun = mean, na.rm = TRUE, df = df, cols = cols, rows = rows,
+  summary_row(df = df, cols = cols, fun = mean, na.rm = TRUE, rows = rows,
               label_col = label_col, label = label, new_row = new_row, fill = fill)
+}
+
+#' blank_row
+#' 
+#' add a row of NA to a data frame.  This is a wrapper around the \code{\link{summary_row}}
+#' function.
+#' 
+#' @inheritParams summary_row
+#' 
+#' @export
+#' 
+#' @examples 
+#' df <- data.frame("year" = 2014:2016,
+#'                  "a" = c(NA, 1, 3),
+#'                  "b" = c("g", "e", "f")
+#'       )
+#' 
+#' averages_row(df = df, cols = 2)
+#' averages_row(df = df, cols = 2, label_col = 1, label = "Totals")
+#' 
+#' df$d <- 5:7
+#' 
+#' # add new row
+#' averages_row(df = df, cols = c(2, 4), label_col = 1, label = "Totals")
+blank_row <- function(df) {
+  summary_row(df = df, cols = 1:length(df), fun = function(x) NA)
 }
