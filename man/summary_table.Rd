@@ -12,4 +12,3 @@ summary_table(df)
 \description{
 \code{summary_table} class constructor
 }
-

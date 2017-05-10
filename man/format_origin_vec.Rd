@@ -24,4 +24,3 @@ x <- c("2014-01-01", "2015-01-01", "2016-01-01")
 format_origin_vec(x, eval = "2015-03-31")
 format_origin_vec(x, eval = "2015-03-31", sep = " - ")
 }
-

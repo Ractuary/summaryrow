@@ -19,4 +19,3 @@ format_currency
 \examples{
 
 }
-

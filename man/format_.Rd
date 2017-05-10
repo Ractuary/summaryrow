@@ -20,4 +20,3 @@ format_(df, cols, include_summary, fun, ...)
 \description{
 generalized function for formatting a data frame column
 }
-

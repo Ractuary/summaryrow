@@ -21,4 +21,3 @@ format_numeric
 format_numeric(insurance_data, cols = 2, digits = 0)
 
 }
-

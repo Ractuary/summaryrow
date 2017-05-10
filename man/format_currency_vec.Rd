@@ -20,4 +20,3 @@ x <- seq(1000, 3000, by = 1000)
 format_currency_vec(x)
 format_currency_vec(x, digits = 2)
 }
-

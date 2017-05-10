@@ -18,4 +18,3 @@ insurance_data
 Simple insurance sample data
 }
 \keyword{datasets}
-

@@ -22,4 +22,3 @@ format_origin
 \examples{
 format_origin(insurance_data, cols = 1, eval = "2017")
 }
-

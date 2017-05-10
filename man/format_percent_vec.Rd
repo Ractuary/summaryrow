@@ -22,4 +22,3 @@ x <- seq(1000, 3000, by = 1000)
 format_percent_vec(x)
 format_percent_vec(x, digits = 2)
 }
-

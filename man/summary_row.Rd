@@ -18,19 +18,19 @@ summary_row(df, cols, fun, ..., rows = NA, label_col = NA,
 fun argument}
 
 \item{rows}{numeric vector of rows to include in summary calculation.  By default
-\code{rows} is set to all rows that were not created by the \code{summary_row} 
+\code{rows} is set to all rows that were not created by the a \code{summary_row} 
 function.}
 
-\item{label_col}{column number of column to hold the summary row label
-specified by the \code{label} argument}
+\item{label_col}{column number to hold the summary row label specified by 
+the \code{label} argument}
 
-\item{label}{summary row label}
+\item{label}{summary row label (e.g. "Totals")}
 
 \item{new_row}{boolean value indicating whether the summary row should
 be a new row attached to the bottom of the data frame or if it should be 
 combined with an already existing summary row.}
 
-\item{fill}{value to put in columns not specified in the \code{cols} argument.
+\item{fill}{value to insert in columns not specified in the \code{cols} argument.
 Default is NA}
 }
 \description{
@@ -65,4 +65,3 @@ df <- summary_row(fun = prod, na.rm = TRUE, df = df, cols = 4, label_col = 1,
 summary_row(fun = mean, df = df, cols = c(2, 4), rows = 2:3, label_col = 1, 
             label = "2 Yr AVG")
 }
-

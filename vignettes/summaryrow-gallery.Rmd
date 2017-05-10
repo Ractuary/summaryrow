@@ -132,3 +132,15 @@ table_9 <- table_9 %>%
 
 kable(table_9)
 ```
+
+### adding a blank row
+
+This can be useful for adding some spacing before your summary row
+
+```{r}
+table_10 <- insurance_data %>% 
+             blank_row() %>%
+             totals_row(cols = 2:4)
+
+kable(table_10)
+```
